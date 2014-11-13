@@ -6,6 +6,7 @@ cnoremap <C-P> <Up>
 cnoremap <C-N> <Down>
 cnoremap <Esc>r <C-F>?
 cmap <M-R> <Esc>r
+cmap ò <Esc>r
 
 " Maps to old shortcuts using Ctrl-O as a prefix
 cnoremap <C-O><C-A>      <C-A>
@@ -14,7 +15,7 @@ cnoremap <C-O><C-B>      <C-B>
 cnoremap <C-O><C-F>      <C-F>
 cnoremap <C-O><C-P>      <C-P>
 cnoremap <C-O><C-D>      <C-D>
-cnoremap <C-O><C-K>      <C-K>
+"cnoremap <C-O><C-K>      <C-K>
 cnoremap <C-O><C-U>      <C-U>
 cnoremap <C-O><C-W>      <C-W>
 cnoremap <C-O><C-Y>      <C-Y>
@@ -26,6 +27,7 @@ cnoremap <C-O><BS>       <BS>
 
 cnoremap <Esc>f <C-\>e<SID>ForwardWord()<CR>
 cmap <M-F> <Esc>f
+cmap æ <Esc>f
 function! <SID>ForwardWord()
     let l:loc = strpart(getcmdline(), 0, getcmdpos() - 1)
     let l:roc = strpart(getcmdline(), getcmdpos() - 1)
@@ -43,6 +45,7 @@ endfunction
 
 cnoremap <Esc>b <C-\>e<SID>BackwardWord()<CR>
 cmap <M-B> <Esc>b
+cmap â <Esc>b
 function! <SID>BackwardWord()
     let l:loc = strpart(getcmdline(), 0, getcmdpos() - 1)
     let l:roc = strpart(getcmdline(), getcmdpos() - 1)
@@ -75,7 +78,7 @@ function! <SID>DeleteChar()
     return l:ret
 endfunction
 
-cnoremap <BS> <C-\>e<SID>BackwardDeleteChar()<CR>
+"cnoremap <BS> <C-\>e<SID>BackwardDeleteChar()<CR>
 function! <SID>BackwardDeleteChar()
     call <SID>saveUndoHistory(getcmdline(), getcmdpos())
     if (getcmdpos() < 2)
@@ -93,7 +96,7 @@ function! <SID>BackwardDeleteChar()
     return l:ret
 endfunction
 
-cnoremap <C-K> <C-\>e<SID>KillLine()<CR>
+"cnoremap <C-K> <C-\>e<SID>KillLine()<CR>
 function! <SID>KillLine()
     call <SID>saveUndoHistory(getcmdline(), getcmdpos())
     let l:cmd = getcmdline()
@@ -122,6 +125,7 @@ endfunction
 
 cnoremap <Esc>d <C-\>e<SID>KillWord()<CR>
 cmap <M-D> <Esc>d
+cmap ä <Esc>d
 function! <SID>KillWord()
     call <SID>saveUndoHistory(getcmdline(), getcmdpos())
     let l:loc = strpart(getcmdline(), 0, getcmdpos() - 1)
